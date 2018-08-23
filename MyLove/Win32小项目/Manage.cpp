@@ -22,9 +22,9 @@ void CManage::InitProc(HDC hdc)
 	m_thing->InitThing( hdc);
 }
 
-void CManage::RenderProc(HDC hdc, HINSTANCE hinst)
+void CManage::RenderProc(HDC &hdc, HINSTANCE& hInst, int flag)
 {
-		m_thing->RenderThing(hdc, hinst);
+		m_thing->RenderThing(hdc, hInst, flag);
 }
 
 void CManage::upProc(HDC hdc)

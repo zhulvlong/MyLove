@@ -12,7 +12,7 @@ public:
 	~CMyThing();
 public:
 	void InitThing(HDC &hdc);					//初始化物品
-	void RenderThing(HDC &hdc, HINSTANCE& hInst);			//绘制物品
+	void RenderThing(HDC &hdc, HINSTANCE& hInst, int flag);			//绘制物品
 	void SetAttribute(int side, MyPoint pos, size_t time);
 public:
 	void clear();

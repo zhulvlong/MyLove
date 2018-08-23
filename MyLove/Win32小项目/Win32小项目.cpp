@@ -162,8 +162,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			HDC hdc = GetDC(hWnd);
 			CManage * MyProc = new CManage;
 			MyProc->InitProc( hdc);
-			MyProc->RenderProc(hdc ,hInst);
-
+			MyProc->RenderProc(hdc ,hInst, rand()%4+1);
 			ReleaseDC(hWnd, hdc);
 			KillTimer(hWnd, 10002);
 			SetTimer(hWnd, 10002, rand() % 2200 +800, NULL);
@@ -181,8 +180,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			HDC hdc = GetDC(hWnd);
 			CManage * MyProc = new CManage;
 			MyProc->InitProc(hdc);
-			MyProc->Change(650, pos, 180);
-			MyProc->RenderProc(hdc, hInst);
+			MyProc->Change(650, pos, 110);
+			MyProc->RenderProc(hdc, hInst, rand()%4 + 1);
 			ReleaseDC(hWnd, hdc);
 
 			MyProc->upProc(hdc);

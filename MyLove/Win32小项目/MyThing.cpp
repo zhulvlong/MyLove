@@ -35,16 +35,23 @@ void CMyThing::InitThing( HDC &hdc)
 	heartDC = CreateCompatibleDC(hdc);
 }
 
-void CMyThing::RenderThing(HDC &hdc ,HINSTANCE& hInst )
+void CMyThing::RenderThing(HDC &hdc ,HINSTANCE& hInst, int flag)
 {
 	TCHAR Str[30] = { 0 };
 	for (int i = 1; i <= 12; ++i)
 	{
 		Sleep(m_time);
-		_stprintf_s(Str, 20, _T("1.%d.bmp"), i);
+		_stprintf_s(Str, 20, _T("%d.%d.bmp"), flag, i);
 		heartBit = (HBITMAP)LoadImage(hInst, Str, IMAGE_BITMAP, m_side, m_side, LR_LOADFROMFILE);
 		SelectObject(heartDC, heartBit);
-		TransparentBlt(hdc, m_pos->col, m_pos->row, m_side, m_side, heartDC, 0, 0, m_side, m_side, RGB(7, 7, 7));
+		if (flag == 1)
+			TransparentBlt(hdc, m_pos->col, m_pos->row, m_side, m_side, heartDC, 0, 0, m_side, m_side, RGB(7, 7, 7));
+		else if(flag == 2)
+			TransparentBlt(hdc, m_pos->col, m_pos->row, m_side, m_side, heartDC, 0, 0, m_side, m_side, RGB(0, 7, 7));
+		else if (flag == 3)
+			TransparentBlt(hdc, m_pos->col, m_pos->row, m_side, m_side, heartDC, 0, 0, m_side, m_side, RGB(0, 0, 10));
+		else
+			TransparentBlt(hdc, m_pos->col, m_pos->row, m_side, m_side, heartDC, 0, 0, m_side, m_side, RGB(0, 8, 0));
 		DeleteObject(heartBit);
  	}
 }
